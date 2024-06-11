@@ -1,0 +1,16 @@
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- script: echo K8 Terraform Azure!
+  displayName: 'Run a one-line script'
+- task: TerraformCLI@2
+  inputs:
+    command: 'validate'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/configuration/iaac/azure /kubernetes/'
+    commandOptions: '-var client_id=$(client_id)-var client_secret=$'
+    allowTelemetryCollection: true
